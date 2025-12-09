@@ -1,5 +1,74 @@
 #include <bits/stdc++.h>
 using namespace std;
+
+
+/* =================================================================
+  POINTER CHEAT SHEET
+ =================================================================
+ 1. & (Ampersand) -> "Address Of"
+    Usage: &x
+    Meaning: "Tell me WHERE x lives in memory." 
+ 
+ 2. * (Asterisk) -> Has TWO meanings:
+ 
+    A) When Declaring: "I am a Pointer"
+       Usage: int *p;
+       Meaning: "p is a special variable that holds an address."
+ 
+    B) When Using: "Go to Address" (Dereference)
+       Usage: *p
+       Meaning: "Teleport to the address inside p and give me the value."
+ =================================================================
+*/
+
+// ---------------------------------------------------------
+// int x = 10;
+// int *p = &x;   // Declare p, store address of x in it.
+// int y = *p;    // Go to address in p, get value (10).
+// ---------------------------------------------------------
+/*
+int *a; means "a is a variable that stores the memory address of an integer."
+In C++, the & symbol is called the Address-of Operator.
+When you write &x, it translates to: "Give me the memory address where the variable x is located."
+*/
+
+/* =================================================================
+   KEYWORD: new
+   =================================================================
+   Usage: Type *ptr = new Type();
+   
+   WHAT IT DOES:
+   1. ALLOCATE: Reserves space in the HEAP memory.
+   2. CONSTRUCT: Runs the constructor to clean/setup the object.
+   3. RETURN: Returns the memory address to your pointer.
+
+   CRITICAL:
+   Objects created with 'new' are PERMANENT. They do not vanish 
+   when the function ends. You must eventually use 'delete ptr' 
+   to free the memory, otherwise you get a "Memory Leak".
+   ================================================================= */
+
+/* =================================================================
+   EXPLANATION: root = new Node();
+   =================================================================
+   1. "new Node()" does THREE things:
+      a) Allocates memory: Finds space in the HEAP (permanent storage) 
+         for a Node.
+      b) Runs Constructor: Triggers Node() to set flag=false and 
+         links=nullptr.
+      c) Returns Address: Gives back the memory location (e.g., 0x900).
+
+   2. "root =" does ONE thing:
+      a) Stores that address into the pointer variable 'root'.
+   
+   WHY USE 'new'? 
+   Variables created with 'new' stay in memory forever until you 
+   delete them. If we didn't use 'new', the Node would disappear 
+   when the function ends.
+   ================================================================= */
+// root = new Node();
+
+
 struct Node {
     Node *links[26] = {NULL};
     bool flag = false;
