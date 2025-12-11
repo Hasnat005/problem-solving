@@ -57,6 +57,7 @@ void super_backward(long long dp[], int N) {
         for (int mask = 0; mask < (1 << N); ++mask) {
             if (mask & (1 << i)) {
                 dp[mask ^ (1 << i)] -= dp[mask];
+                if(dp[mask ^ (1 << i)] < 0) dp[mask ^ (1 << i)] += mod;
             }
         }
     }
